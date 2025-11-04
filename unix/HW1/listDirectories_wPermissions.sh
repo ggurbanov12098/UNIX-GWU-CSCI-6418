@@ -1,6 +1,4 @@
 #!/bin/bash
-
-#!/usr/bin/env bash
 # Usage: details.sh [PATH]
 p="${1:-.}"
 
