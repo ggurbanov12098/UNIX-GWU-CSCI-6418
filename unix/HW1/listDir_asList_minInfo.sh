@@ -1,6 +1,10 @@
 #!/bin/bash
-dir="${1:-.}"
 
+if [ "$#" -gt 1 ]; then
+  echo "usage: $0 [directory]"
+  exit 1
+fi
+dir="${1:-.}"
 for d in "$dir"/*/; do
   [ -d "$d" ] || continue       # skip if doesn't  match
   name="${d%/}"                 # dropping slash
