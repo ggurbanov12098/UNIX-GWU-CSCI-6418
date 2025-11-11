@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+if [ "$#" -eq 0 ]; then
+	printf 'Usage: %s [DIRECTORY] [--color]\n' "$(basename "$0")" >&2
+	exit 1
+fi
+
 set -euo pipefail
 D="${1:-.}"; [ -d "$D" ] || { echo "Not a directory: $D" >&2; exit 1; }
 COLOR="${2:-}"
