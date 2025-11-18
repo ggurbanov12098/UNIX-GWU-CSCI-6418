@@ -1,0 +1,29 @@
+.SUFFIXES: .c .o .tex .dvi
+
+# first rule is "all"
+# 	includes prereq:
+all0	: rule_a rule_b part2
+all	: rule_a part1 rule_b rule_c part2
+
+
+rule_a :
+	@ printf "...... this is rule a\n"
+	@ printf "....................a\n"
+
+rule_b:
+	@ printf "++++++ this is rule b\n"
+	@ printf "++++++++++++++++++++b\n"
+
+rule_c:
+	@ printf "++++++ this is rule c\n"
+	@ printf "++++++++++++++++++++c\n"
+
+part1:
+	@ printf "...... this is part 1\n"
+	@ printf "...... Do nothing!\n"
+	@ printf "....................1\n"
+
+part2:
+	@ printf "...... this is part 2\n"
+	@ printf "...... Do nothing!p2\n"
+	@ printf "....................2\n"

@@ -1,0 +1,36 @@
+today=$(shell date)
+
+csources=$(wildcard *.c)
+csources1=$(wildcard source_c/*)
+csources2=$(notdir $(csources1))
+csources3=$(sort $(csources2))
+c_objects:=$(patsubst %.c, %.o, $(csources3))
+
+help :
+	@ pritnf "$(cyn) usage: make \n"
+	@printf "$(cyn) make compile $(noc)\n"
+
+list : showfiles endmake
+	@ printf "$(cyn) All prereq executed\n"
+	@ printf "$(red) All rules done. Stop!$(noc)\n"
+
+
+showfiles:
+	@printf "................................"
+	@printf "... csources wildcard \n"
+	@printf "... csources= $(csources) \n"
+	@printf "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n"
+	@printf "................................\n"
+	@printf "... csources1 wildcard \n"
+	@printf "... csources1=$(csources1) \n"
+	@printf "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n"
+	@printf "................................\n"
+	@printf "... csources2 notdir \n"
+	@printf "... csources2= $(csources2) \n"
+	@printf "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n"
+	@printf "................................\n"
+	@printf "... csources3 sort \n"
+	@printf "... csources3= $(csources) \n"
+	@printf "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n"
+	@printf "...............................\n"
+	@printf "\n"
