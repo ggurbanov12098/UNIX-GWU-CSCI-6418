@@ -1,0 +1,46 @@
+today=$(shell date)
+
+csources=$(wildcard *.c)                      
+csources1=$(wildcard source_c/*)
+csources2=$(notdir $(csources1))
+csources3=$(sort $(csources2))
+c_objects:=$(patsubst %.c, %.o, $(csources3) )
+
+
+
+showfiles:
+	@printf " ............................\n"
+	@printf " ... csources wildcard \n"
+	@printf " ... csources = $(csources) \n"
+	@printf " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
+	@printf " ............................\n"
+	@printf " ... csources1 wildcard \n"
+	@printf " ... csources1 = $(csources1) \n"
+	@printf " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
+	@printf " ............................\n"
+	@printf " ... csources2 notdir \n"
+	@printf " ... csources2 = $(csources2) \n"
+	@printf " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
+	@printf " ............................\n"
+	@printf " ... csources3 sort \n"
+	@printf " ... csources3 = $(csources3) \n"
+	@printf " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
+	@printf " ............................\n"
+	@printf " ... c_objects patsubst \n"
+	@printf " ... c_objects = $(c_objects) \n"
+	@printf " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
+	@printf "\n"
+
+
+vpath %.c source_c
+vpath %.o obj
+compile: $(c_objects)
+
+%.o : %.c
+	@printf " ::: compile source name %-22s ..... target is %s \n" "$<" "$@"
+	touch obj/$@ ; ls -l obj/$@ ; sleep 1s
+	@printf " /  / / / / / / / / / / / / / / / / / / /\n\n"
+
+clear : clean
+clean:
+	rm -fv bin/* obj/*
